@@ -4,9 +4,11 @@ build-backend = "hatchling.build"
 
 [project]
 name = "jupyter-ai-hermes"
-version = "0.1.0"
+version = "0.1.1"
 description = "Hermes Agent ACP persona for Jupyter AI — includes notebook context injection via MCP bridge"
+readme = "README.md"
 requires-python = ">=3.12"
+license = {text = "MIT"}
 dependencies = [
     "jupyter-ai-acp-client>=0.1.5",
     "jupyter-ai-persona-manager",
@@ -30,3 +32,8 @@ packages = ["jupyter_ai_hermes"]
 
 [tool.hatch.build.targets.wheel.force-include]
 "static" = "jupyter_ai_hermes/static"
+
+[project.urls]
+Homepage = "https://github.com/dive4dec/jupyter-ai-hermes"
+"Bug Tracker" = "https://github.com/dive4dec/jupyter-ai-hermes/issues"
+"Source Code" = "https://github.com/dive4dec/jupyter-ai-hermes"
