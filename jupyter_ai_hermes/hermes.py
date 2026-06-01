@@ -12,13 +12,13 @@ from jupyter_ai_acp_client.base_acp_persona import BaseAcpPersona
 from jupyterlab_chat.models import Message
 from .jupyter_context import gather_context
 
-_hermes_path = shutil.which("hermes") or "/opt/hermes/.venv/bin/hermes"
+_hermes_path = shutil.which("hermes") or os.environ.get("HERMES_BIN_PATH")
 
-if not os.path.exists(_hermes_path):
+if not _hermes_path or not os.path.exists(_hermes_path):
     raise PersonaRequirementsUnmet(
         "This persona requires Hermes Agent to be installed. "
-        "Ensure `hermes` is on PATH or at /opt/hermes/.venv/bin/hermes, "
-        "then restart."
+        "Install Hermes Agent and ensure `hermes` is on PATH, or set "
+        "the HERMES_BIN_PATH environment variable to the full path."
     )
 
 _avatar_path = str(os.path.abspath(
