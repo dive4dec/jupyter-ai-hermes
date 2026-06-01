@@ -1,0 +1,32 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "jupyter-ai-hermes"
+version = "0.1.0"
+description = "Hermes Agent ACP persona for Jupyter AI — includes notebook context injection via MCP bridge"
+requires-python = ">=3.12"
+dependencies = [
+    "jupyter-ai-acp-client>=0.1.5",
+    "jupyter-ai-persona-manager",
+    "mcp>=1.27",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-asyncio"]
+
+[project.entry-points."jupyter_ai.personas"]
+hermes-acp = "jupyter_ai_hermes.hermes:HermesAcpPersona"
+
+[project.entry-points."jupyter_server_mcp.tools"]
+hermes_mcp_tools = "jupyter_ai_hermes.mcp_tools:TOOLS"
+
+[project.scripts]
+jupyter-mcp-cli = "jupyter_ai_hermes.mcp_cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["jupyter_ai_hermes"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"static" = "jupyter_ai_hermes/static"
