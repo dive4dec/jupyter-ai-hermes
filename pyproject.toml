@@ -12,6 +12,7 @@ license = {text = "MIT"}
 dependencies = [
     "jupyter-ai-acp-client>=0.1.5",
     "jupyter-ai-persona-manager",
+    "jupyter-ai-tools",
     "mcp>=1.27",
 ]
 
