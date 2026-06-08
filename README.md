@@ -22,6 +22,20 @@ pip install jupyter-ai-hermes
 
 Then restart JupyterLab. The "Hermes Agent" persona will appear in the Jupyter AI chat panel.
 
+## Configuration
+
+By default the package searches for `hermes` in `PATH`. Override with:
+
+```bash
+export HERMES_BIN_PATH=/path/to/hermes
+```
+
+## Related Packages
+
+- **[jupyter-hermes-proxy](https://github.com/dive4dec/jupyter-hermes-proxy)** — Launch the Hermes Agent dashboard from the JupyterLab launcher panel with automatic port management via jupyter-server-proxy.
+
+Both packages share the same `HERMES_BIN_PATH` environment variable convention.
+
 ## MCP Tools
 
 The package registers 3 custom MCP tools alongside the 16 built-in Jupyter AI notebook tools:
@@ -65,8 +79,8 @@ jupyter-mcp-cli list_cell_tags \
 │  │ (YDoc)      │◄──►│ ┌─────────────────┐ │  │
 │  └─────────────┘    │ │ Hermes Persona  │ │  │
 │                     │ │  ├─ gather_ctx  │ │  │
-│  ┌─────────────┐    │ │  ├─ MCP docs   │ │  │
-│  │ MCP Server  │◄──►│ │  └─ forward ──►│ │  │
+│  ┌─────────────┐    │ │  ├─ MCP docs    │ │  │
+│  │ MCP Server  │◄──►│ │  └─ forward ──► │ │  │
 │  │ :3001       │    │ └─────────────────┘ │  │
 │  └─────────────┘    └─────────────────────┘  │
 │                                              │

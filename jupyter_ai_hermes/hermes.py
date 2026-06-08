@@ -12,7 +12,7 @@ from jupyter_ai_acp_client.base_acp_persona import BaseAcpPersona
 from jupyterlab_chat.models import Message
 from .jupyter_context import gather_context
 
-_hermes_path = shutil.which("hermes") or os.environ.get("HERMES_BIN_PATH")
+_hermes_path = os.environ.get("HERMES_BIN_PATH") or shutil.which("hermes")
 
 if not _hermes_path or not os.path.exists(_hermes_path):
     raise PersonaRequirementsUnmet(
