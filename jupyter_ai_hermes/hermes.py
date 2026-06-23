@@ -91,8 +91,8 @@ class HermesAcpPersona(BaseAcpPersona):
     @property
     def defaults(self) -> PersonaDefaults:
         return PersonaDefaults(
-            name="Hermes Agent",
-            description="Hermes Agent as an ACP coding agent persona with Jupyter MCP tools.",
+            name="Hermes",
+            description="Hermes as an ACP coding agent persona with Jupyter MCP tools.",
             avatar_path=_avatar_path,
             system_prompt="unused",
         )
