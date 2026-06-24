@@ -22,7 +22,7 @@ if not _hermes_path or not os.path.exists(_hermes_path):
     )
 
 _avatar_path = str(os.path.abspath(
-    os.path.join(os.path.dirname(__file__), "..", "static", "hermes.svg")
+    os.path.join(os.path.dirname(__file__), "static", "hermes.svg")
 ))
 
 # ── Tool documentation injected into every prompt ──────────────────────────
