@@ -73,6 +73,19 @@ Usage: `jupyter-mcp-cli <tool> --arg key=value --arg key2=value2`
 | `jupyter-mcp-cli select_cell --arg cell_id=X` | Navigate to a cell |
 | `jupyter-mcp-cli open_file --arg file_path=X` | Open file in JupyterLab |
 
+### Cell content formatting rules
+- **Split headers into their own cells** — `#`, `##`, `###` should be standalone markdown cells, not mixed with body text
+- **Use actual newlines in cell content** — output real line breaks, NOT literal `\n` characters (the CLI normalizes these anyway, but structured output is cleaner)
+- **One logical idea per cell** — intro text, code, and output interpretation should be separate cells
+- **Keep cells concise** — prefer multiple smaller cells over one dense wall-of-text cell
+
+### Format-aware editing (Jupytext)
+Before editing, call `jupyter-mcp-cli get_notebook_info --arg file_path=X` to know the format:
+- `.ipynb` — full markdown support, separate cells for everything
+- `.py` (percent) — markdown cells use `# |` or are converted to docstrings; prefer `# %%` cell markers
+- `.md` / `.myst.md` — code in fenced blocks (```python), markdown is native
+- `.Rmd` — code in ` ```{python} ` or ` ```{r} ` blocks
+
 ### Important notes
 - **add_cell/edit_cell/delete_cell/insert_cell/set_cell_metadata/get_cell_metadata/list_cell_tags** use `file_path` parameter
 - **read_notebook_cells/get_active_cell_id/run_all_cells** use `notebook_path` parameter
